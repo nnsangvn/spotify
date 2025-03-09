@@ -7,7 +7,7 @@ class BasicAppButton extends StatelessWidget {
 
   const BasicAppButton({
     required this.onPressed,
-    required this.height,
+    this.height,
     required this.title,
     super.key,
   });
@@ -17,6 +17,7 @@ class BasicAppButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
+        foregroundColor: Colors.white,
         minimumSize: Size.fromHeight(height ?? 92),
       ),
       child: Text(title),
