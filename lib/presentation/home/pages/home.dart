@@ -37,7 +37,8 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
       ),
       body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _homeTopCard(),
             _tabs(),
@@ -90,7 +91,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         vertical: 40,
         horizontal: 16,
       ),
-      tabs: const [
+      tabs: [
         Text(
           'News',
           style: TextStyle(

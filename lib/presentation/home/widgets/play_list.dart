@@ -5,6 +5,7 @@ import 'package:spotify/core/configs/theme/app_colors.dart';
 import 'package:spotify/domain/entities/song/song.dart';
 import 'package:spotify/presentation/home/bloc/play_list_cubit.dart';
 import 'package:spotify/presentation/home/bloc/play_list_state.dart';
+import 'package:spotify/presentation/song_player/pages/song_player.dart';
 
 class PlayList extends StatelessWidget {
   const PlayList({super.key});
@@ -63,7 +64,16 @@ class PlayList extends StatelessWidget {
       scrollDirection: Axis.vertical,
       itemBuilder: (context, index) {
         return GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (BuildContext context) => SongPlayerPage(
+                  songEntity: songs[index],
+                ),
+              ),
+            );
+          },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -98,7 +108,7 @@ class PlayList extends StatelessWidget {
                         style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 11),
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
               Row(

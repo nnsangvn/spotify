@@ -15,6 +15,9 @@ class SigninPage extends StatelessWidget {
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
 
+  final email = 'pknao@gmail.com';
+  final pw = 'password';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,7 +84,7 @@ class SigninPage extends StatelessWidget {
 
   Widget _emailField(BuildContext context) {
     return TextField(
-      controller: _email,
+      controller: _email..text = email,
       decoration: InputDecoration(hintText: "Enter Username Or Email")
           .applyDefaults(Theme.of(context).inputDecorationTheme),
     );
@@ -89,7 +92,7 @@ class SigninPage extends StatelessWidget {
 
   Widget _passwordField(BuildContext context) {
     return TextField(
-      controller: _password,
+      controller: _password..text = pw,
       decoration: InputDecoration(hintText: "Password")
           .applyDefaults(Theme.of(context).inputDecorationTheme),
     );
