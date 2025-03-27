@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spotify/common/helpers/is_dark_mode.dart';
+import 'package:spotify/common/widgets/favorite_button/favorite_button.dart';
 import 'package:spotify/core/configs/theme/app_colors.dart';
 import 'package:spotify/domain/entities/song/song.dart';
 import 'package:spotify/presentation/home/bloc/play_list_cubit.dart';
@@ -14,7 +15,8 @@ class PlayList extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => PlayListCubit()..getPlayList(),
-      child: BlocBuilder<PlayListCubit, PlayListState>(builder: (context, state) {
+      child:
+          BlocBuilder<PlayListCubit, PlayListState>(builder: (context, state) {
         if (state is PlayListLoading) {
           return Container(
             alignment: Alignment.center,
@@ -42,7 +44,9 @@ class PlayList extends StatelessWidget {
                     Text(
                       'See more',
                       style: TextStyle(
-                          fontWeight: FontWeight.w400, fontSize: 12, color: Color(0xffC6C6C6)),
+                          fontWeight: FontWeight.w400,
+                          fontSize: 12,
+                          color: Color(0xffC6C6C6)),
                     ),
                   ],
                 ),
@@ -84,10 +88,14 @@ class PlayList extends StatelessWidget {
                     width: 45,
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: context.isDarkMode ? AppColors.darkGrey : const Color(0xffE6E6E6)),
+                        color: context.isDarkMode
+                            ? AppColors.darkGrey
+                            : const Color(0xffE6E6E6)),
                     child: Icon(
                       Icons.play_arrow_rounded,
-                      color: context.isDarkMode ? const Color(0xff959595) : const Color(0xff555555),
+                      color: context.isDarkMode
+                          ? const Color(0xff959595)
+                          : const Color(0xff555555),
                     ),
                   ),
                   const SizedBox(
@@ -98,14 +106,16 @@ class PlayList extends StatelessWidget {
                     children: [
                       Text(
                         songs[index].title,
-                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16),
                       ),
                       const SizedBox(
                         height: 5,
                       ),
                       Text(
                         songs[index].artist,
-                        style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 11),
+                        style: const TextStyle(
+                            fontWeight: FontWeight.w400, fontSize: 11),
                       ),
                     ],
                   ),
@@ -115,12 +125,8 @@ class PlayList extends StatelessWidget {
                 children: [
                   Text(songs[index].duration.toString().replaceAll('.', ':')),
                   const SizedBox(width: 20),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.favorite_rounded,
-                      color: AppColors.darkGrey,
-                    ),
+                  FavoriteButton(
+                    songEntity: songs[index],
                   ),
                 ],
               )
