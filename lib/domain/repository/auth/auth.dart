@@ -6,4 +6,6 @@ abstract class AuthRepository {
   Future<Either> singup(CreateUserReq createUserReq);
 
   Future<Either> singin(SigninUserReq signinUserReq);
+
+  Future<Either> getUser();
 }

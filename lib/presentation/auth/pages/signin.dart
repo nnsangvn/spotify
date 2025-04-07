@@ -15,7 +15,7 @@ class SigninPage extends StatelessWidget {
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
 
-  final email = 'pknao@gmail.com';
+  final email = 'admin@mgil.com';
   final pw = 'password';
 
   @override
